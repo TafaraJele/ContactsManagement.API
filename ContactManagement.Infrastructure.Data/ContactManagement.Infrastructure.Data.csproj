@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.13.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ContactManagement.Abstractions\ContactManagement.Abstractions.csproj" />
+    <ProjectReference Include="..\ContactManagement.Core\ContactManagement.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Veneka.Platform.Common">
+      <HintPath>..\References\Veneka.Platform.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Veneka.Platform.Messaging">
+      <HintPath>..\References\Veneka.Platform.Messaging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ContactsManagement.API</name>
+    </assembly>
+    <members>
+        <member name="M:ContactsManagement.API.Controllers.ContactsController.CreateContact(ContactManagement.Abstractions.Models.Contact)">
+            <summary>
+            Creates a new contact in the system given the contact details
+            </summary>
+            <param name="contact"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ContactsManagement.API.Controllers.ContactsController.UpdateContact(ContactManagement.Abstractions.Models.Contact)">
+            <summary>
+            Updates a contact in the system given the contact details
+            </summary>
+            <param name="contact"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ContactsManagement.API.Controllers.ContactsController.DeleteContact(System.Guid)">
+            <summary>
+            Sets the contact as deleted given the contact id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ContactsManagement.API.Controllers.ContactsController.GetContact(System.Guid)">
+            <summary>
+            Get a contact in the system given the contact Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ContactsManagement.API.Controllers.ContactsController.GetContacts">
+            <summary>
+            Gets all contacts in the system
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ContactsManagement.API.Helpers.SecurityContextHelper.GetCurrentRequestContext(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

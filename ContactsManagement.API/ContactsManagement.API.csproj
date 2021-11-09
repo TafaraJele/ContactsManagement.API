@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\TafaraJele(Ext)\source\repos\ContactsManagement.API\ContactsManagement.API\ContactsManagement.API.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ContactManagement.Abstractions\ContactManagement.Abstractions.csproj" />
+    <ProjectReference Include="..\ContactManagement.Core\ContactManagement.Core.csproj" />
+    <ProjectReference Include="..\ContactManagement.Infrastructure.Data\ContactManagement.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Veneka.Platform.Common">
+      <HintPath>..\References\Veneka.Platform.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Veneka.Platform.Messaging">
+      <HintPath>..\References\Veneka.Platform.Messaging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+</Project>
