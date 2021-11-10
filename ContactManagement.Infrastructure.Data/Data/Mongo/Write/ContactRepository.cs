@@ -58,7 +58,6 @@ namespace ContactManagement.Infrastructure.Data.Data.Mongo.Write
                 }
             }
 
-
             if (filter == null) throw new ArgumentException("Invalid search parameters specified");
             List<ContactEntity> result = await _context.Contacts.Find(filter).ToListAsync();
             return result;
