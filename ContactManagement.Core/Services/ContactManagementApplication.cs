@@ -56,7 +56,7 @@ namespace ContactManagement.Core.Services
             var commandResult = new CommandResult<Guid>(Guid.NewGuid(), resource, false);
 
             //get contact to be deleted
-            var entity = (ContactEntity)(await _contactRepository.LoadAggregateAsync(Guid.NewGuid()));
+            var entity = (ContactEntity)(await _contactRepository.LoadAggregateAsync(Id));
 
             //set is delete value of the contact = true
             var aggregate = new ContactAggregate(entity);

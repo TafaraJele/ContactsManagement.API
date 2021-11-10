@@ -1,6 +1,8 @@
 ﻿using ContactManagement.Abstractions.Enums;
 using ContactManagement.Abstractions.Models;
 using ContactManagement.Abstractions.Repositories.Query;
+using ContactManagement.Abstractions.Settings;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,10 @@ namespace ContactManagement.Infrastructure.Data.Data.Mongo.Read
     {
         private readonly MongoContext _context;
 
+        public ContactQueryRepository(IOptions<ApplicationSettings> config)
+        {
+            _context = new MongoContext(config);
+        }
         public ContactQueryRepository(string serverName, string databaseName)
         {
             _context = new MongoContext(serverName, databaseName);

@@ -56,6 +56,6 @@ namespace ContactManagement.Infrastructure.Data.Data.Mongo.Read
             Database = client.GetDatabase(_databaseName);
         }
 
-        public IMongoCollection<Contact> ContactQuery => Database.GetCollection<Contact>("ContactQuery");
+        public IMongoCollection<Contact> ContactQuery => Database.GetCollection<Contact>("Contacts");
     }
 }

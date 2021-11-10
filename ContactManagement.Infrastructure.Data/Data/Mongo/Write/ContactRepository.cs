@@ -1,8 +1,10 @@
 ﻿using ContactManagement.Abstractions.Entities;
 using ContactManagement.Abstractions.Enums;
 using ContactManagement.Abstractions.Repositories.Write;
+using ContactManagement.Abstractions.Settings;
 using ContactManagement.Core.Entities;
 using ContactManagement.Infrastructure.Data.Data.Mongo.Read;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,10 @@ namespace ContactManagement.Infrastructure.Data.Data.Mongo.Write
     public class ContactRepository : IContactRepository
     {
         private MongoContext _context;
-
+        public ContactRepository(IOptions<ApplicationSettings> config)
+        {
+            _context = new MongoContext(config);
+        }
         public ContactRepository(string serverName, string databaseName)
         {
             _context = new MongoContext(serverName, databaseName);
