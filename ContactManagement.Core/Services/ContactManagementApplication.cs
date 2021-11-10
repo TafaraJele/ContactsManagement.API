@@ -46,6 +46,16 @@ namespace ContactManagement.Core.Services
                 return commandResult;
 
             }
+            else
+            {
+                commandResult = new CommandResult<Contact>(Guid.NewGuid(), resource, false);
+
+                foreach(var errorMessage in result.ValidationMessages)
+                {
+                    commandResult.AddResultMessage(errorMessage.MessageType, errorMessage.Code, errorMessage.Message);
+                }
+
+            }
 
             return commandResult;
         }

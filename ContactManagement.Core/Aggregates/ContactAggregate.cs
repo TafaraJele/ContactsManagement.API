@@ -48,7 +48,15 @@ namespace ContactManagement.Core.Aggregates
             {
                 validationResult.AddValidationMessage(ResultMessageType.Error, "01", "At least Phone or Email is required to save a contact");
             }
-           
+
+            var isValidEmail = ValidateEmail(contact);
+
+            if (!isValidEmail)
+            {
+                validationResult.AddValidationMessage(ResultMessageType.Error, "01", "Please enter a valid email");
+            }
+
+
             return validationResult;
         }
 
@@ -73,6 +81,16 @@ namespace ContactManagement.Core.Aggregates
             }
             return validationResult;
 
+        }
+
+        private bool ValidateEmail(Contact contact)
+        {
+            var index = contact.Email.IndexOf("@");
+            if(index == -1)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
