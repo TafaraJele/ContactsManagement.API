@@ -83,10 +83,12 @@ namespace ContactManagement.Core.Services
             var commandResult = new CommandResult<Contact>(Guid.NewGuid(), resource, false);
             
             //find contact to be updated
-            var entities = await _contactRepository.FindAggregatesAsync(new List<SearchParameter> { new SearchParameter { Name = "ID", Value = command.CommandData.Id.ToString() } }, FilterType.And) as List<ContactEntity>;        
+            var entities = await _contactRepository.FindAggregatesAsync(new List<SearchParameter> { new SearchParameter { Name = "", Value = "" } }, FilterType.And) as List<ContactEntity>;
 
+            //select contact to update
+            var entity = entities.Where(c => c.Id == command.CommandData.Id && c.IsDeleted == false).Select(c => c).FirstOrDefault();
 
-            if (entities.Count == 0)
+            if (entity == null)
             {
                 commandResult = new CommandResult<Contact>(Guid.NewGuid(), resource, false);
                 commandResult.AddResultMessage(ResultMessageType.Error, "01", "Update record not found");
@@ -95,7 +97,7 @@ namespace ContactManagement.Core.Services
             }
 
             //validate contact detail in the aggregate class and create entity model if valid
-            var aggregate = new ContactAggregate(entities.FirstOrDefault());
+            var aggregate = new ContactAggregate(entity);
 
             var result = aggregate.CreateContact(command.CommandData);
 
