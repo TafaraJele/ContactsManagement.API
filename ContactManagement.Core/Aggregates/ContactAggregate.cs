@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Veneka.Platform.Common;
+using Veneka.Platform.Common.Enums;
 
 namespace ContactManagement.Core.Aggregates
 {
@@ -39,6 +40,15 @@ namespace ContactManagement.Core.Aggregates
 
         private ValidationResult ValidateContact(Contact contact)
         {
+            if (string.IsNullOrEmpty(contact.Name))
+            {
+                validationResult.AddValidationMessage(ResultMessageType.Error, "01", "Name is required");
+            }
+            if (string.IsNullOrEmpty(contact.Phone) && string.IsNullOrEmpty(contact.Email))
+            {
+                validationResult.AddValidationMessage(ResultMessageType.Error, "01", "At least Phone or Email is required to save a contact");
+            }
+           
             return validationResult;
         }
 

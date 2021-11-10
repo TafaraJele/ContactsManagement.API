@@ -45,11 +45,11 @@ namespace ContactManagement.Infrastructure.Data.Data.Mongo.Write
                         {
                             if (filter == null)
                             {
-                                filter = Builders<ContactEntity>.Filter.Eq("id", parameter.Value);
+                                filter = Builders<ContactEntity>.Filter.Eq("_id", parameter.Value);
                             }
                             else
                             {
-                                filter = Builders<ContactEntity>.Filter.Eq("id", parameter.Value) & filter;
+                                filter = Builders<ContactEntity>.Filter.Eq("_id", parameter.Value) & filter;
                             }
 
                         }

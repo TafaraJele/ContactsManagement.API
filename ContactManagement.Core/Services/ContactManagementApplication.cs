@@ -83,21 +83,19 @@ namespace ContactManagement.Core.Services
             var commandResult = new CommandResult<Contact>(Guid.NewGuid(), resource, false);
             
             //find contact to be updated
-            var entities = await _contactRepository.FindAggregatesAsync(new List<SearchParameter> { new SearchParameter { Name = "ID", Value = command.CommandData.Id.ToString() } }, FilterType.And) as List<ContactEntity>;
+            var entities = await _contactRepository.FindAggregatesAsync(new List<SearchParameter> { new SearchParameter { Name = "ID", Value = command.CommandData.Id.ToString() } }, FilterType.And) as List<ContactEntity>;        
 
-            //select first record
-            var entity = entities.Where(c => c.Id == command.CommandData.Id).Select(c => c).FirstOrDefault();
 
-            if (entity == null)
+            if (entities.Count == 0)
             {
                 commandResult = new CommandResult<Contact>(Guid.NewGuid(), resource, false);
-
+                commandResult.AddResultMessage(ResultMessageType.Error, "01", "Update record not found");
                 return commandResult;
 
             }
 
             //validate contact detail in the aggregate class and create entity model if valid
-            var aggregate = new ContactAggregate(entity);
+            var aggregate = new ContactAggregate(entities.FirstOrDefault());
 
             var result = aggregate.CreateContact(command.CommandData);
 
